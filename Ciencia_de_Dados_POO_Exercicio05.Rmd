@@ -1,0 +1,209 @@
+---
+title: "PROJETO INTEGRADOR - Exercício 5"
+data: "16 de abril de 2018"
+output: html_notebook 
+---
+
+```{r}
+install.packages("readr")
+install.packages("dplyr")
+install.packages("descr")
+library(readr) # Carrega o pacote 
+library(dplyr) # Carrega o pacote
+library(descr) # Carrega o pacote 
+
+enade14 <- read_csv2("https://raw.githubusercontent.com/neylsoncrepalde/introducao_ao_r/master/dados/enade_2014_amostra.csv")
+
+```
+
+
+1.  Para um vetor de 1 até 100, apresente o resultado final para as seguintes operações: adicionar a raiz quadrada do exponencial e dividir pela média do vetor.
+
+```{r}
+vetor <- c()
+
+for (i in 1:100) {
+  vetor[i] = i + sqrt(exp(i))
+  y = mean(vetor)
+  z = vetor/y
+}
+z
+
+```
+
+2.  Para um vetor de 1 até 100, se o número for menor do que 20, exiba na tela pequeno. Se o número estiver entre 21 e 40, exiba médio. Se estiver entre 41 e 80, exiba grande. Se for igual a 100, exiba a palavra frango. Quando o número da vez for a sua idade, exiba Achei você!. Execute esta tarefa usando um loop for. (Obs.: Não use um número mágico para representar sua idade. Guarde-a num objeto chamado minha_idade.)
+  
+```{r}
+minha_idade <- 24
+
+for (i in 1:100) {
+  if (i <= 20) {
+    print("Pequeno")
+  }
+  if (i > 20 & i <= 40 & i != minha_idade) {
+    print("Médio")
+  }
+  if (i > 40 & i <= 80) {
+    print("Grande")
+  }
+  if (i == minha_idade) {
+    print("Achei você!")
+  }
+  if (i == 100) {
+    print("Frango")
+  }
+}
+
+
+```
+  
+3.  Execute a mesma tarefa anterior usando um loop while.
+  
+```{r}
+x = 0
+
+while (x <= 100) {
+  x = x + 1
+  if (x <= 20) {
+    print("Pequeno")
+  }
+  if (x > 20 & x <= 40 & x != minha_idade) {
+    print("Médio")
+  }
+  if (x > 40 & x <= 80) {
+    print("Grande")
+  }
+  if (x == minha_idade) {
+    print("Achei você!")
+  }
+  if (x == 100) {
+    print("Frango")
+  }
+}
+
+```
+  
+4.  Crie uma matriz vazia de tamanho 10 X 10. Usando for loops, preencha a matriz de modo que ela fique assim:
+
+```{r}
+##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+##  [1,]    0   -1   -2   -3   -4   -5   -6   -7   -8    -9
+##  [2,]    1    0   -1   -2   -3   -4   -5   -6   -7    -8
+##  [3,]    2    1    0   -1   -2   -3   -4   -5   -6    -7
+##  [4,]    3    2    1    0   -1   -2   -3   -4   -5    -6
+##  [5,]    4    3    2    1    0   -1   -2   -3   -4    -5
+##  [6,]    5    4    3    2    1    0   -1   -2   -3    -4
+##  [7,]    6    5    4    3    2    1    0   -1   -2    -3
+##  [8,]    7    6    5    4    3    2    1    0   -1    -2
+##  [9,]    8    7    6    5    4    3    2    1    0    -1
+## [10,]    9    8    7    6    5    4    3    2    1     0
+```
+
+
+```{r}
+A = matrix(0, nrow = 10, ncol = 10)
+
+for(l in 0:nrow(A)){
+    for(j in 0:ncol(A)){
+        A[l,j]=l - j
+    } 
+}
+A
+
+```
+
+5.  Crie uma matriz vazia de tamanho 10 X 10. Usando for loops, preencha a matriz de modo que ela fique assim:
+
+```{r}
+##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+##  [1,]    2    3    4    5    6    7    8    9   10    11
+##  [2,]    3    4    5    6    7    8    9   10   11    12
+##  [3,]    4    5    6    7    8    9   10   11   12    13
+##  [4,]    5    6    7    8    9   10   11   12   13    14
+##  [5,]    6    7    8    9   10   11   12   13   14    15
+##  [6,]    7    8    9   10   11   12   13   14   15    16
+##  [7,]    8    9   10   11   12   13   14   15   16    17
+##  [8,]    9   10   11   12   13   14   15   16   17    18
+##  [9,]   10   11   12   13   14   15   16   17   18    19
+## [10,]   11   12   13   14   15   16   17   18   19    20
+```
+
+
+
+```{r}
+B = matrix(0, nrow = 10, ncol = 10)
+
+for(w in 1:nrow(B)){
+    for(e in 1:ncol(B)){
+        B[w,e]= w + e
+    } 
+}
+B
+
+```
+
+6.  Crie uma matriz vazia de tamanho 10 X 10. Usando for loops, preencha a matriz de modo que ela fique assim:
+
+```{r}
+##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
+##  [1,]    4    9   16   25   36   49   64   81  100   121
+##  [2,]    9   16   25   36   49   64   81  100  121   144
+##  [3,]   16   25   36   49   64   81  100  121  144   169
+##  [4,]   25   36   49   64   81  100  121  144  169   196
+##  [5,]   36   49   64   81  100  121  144  169  196   225
+##  [6,]   49   64   81  100  121  144  169  196  225   256
+##  [7,]   64   81  100  121  144  169  196  225  256   289
+##  [8,]   81  100  121  144  169  196  225  256  289   324
+##  [9,]  100  121  144  169  196  225  256  289  324   361
+## [10,]  121  144  169  196  225  256  289  324  361   400
+```
+
+
+```{r}
+
+C = matrix(0, nrow = 10, ncol = 10)
+a = 2
+s = 2
+for(a in 1:nrow(C)){
+    for(s in 1:ncol(C)){
+      C[a,s]= (a+s)^2
+    } 
+}
+C
+
+```
+
+7.  Você conseguiu descobrir um loop para exibir na tela a sequência de fibonacci?
+
+```{r}
+
+
+fib = c()
+fib[1] = 1
+fib[2] = 1
+
+for (i in 3:20){
+  fib[i] = fib[i-1] + fib[i-2]
+}
+
+fib
+
+```
+
+
+ou, usando `função`:
+
+```{r}
+
+fibo <- function(n) {
+  x = numeric(n)
+  x[1:2] = c(1,1)
+  for(i in 3:n) {
+    x[i] = x[i-1] + x[i-2]
+  }
+  return(x)
+}
+
+fibo(20)
+```
+
